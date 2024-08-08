@@ -137,7 +137,7 @@ var timeout = function timeout(s) {
 
 var showRecipe = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var res, data, recipe;
+    var res, data, recipe, markup;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -165,20 +165,24 @@ var showRecipe = /*#__PURE__*/function () {
             image: recipe.image_url,
             servings: recipe.servings,
             cookingTime: recipe.cooking_time,
-            ingredints: recipe.ingredints
+            ingredients: recipe.ingredients
           };
           console.log(res, data);
-          _context.next = 17;
+
+          // 2) Rendering recipe
+          markup = "\n        <figure class=\"recipe__fig\">\n              <img src=\"".concat(recipe.image, "\" alt=\"").concat(recipe.title, "\" class=\"recipe__img\" />\n              <h1 class=\"recipe__title\">\n                <span>").concat(recipe.title, "</span>\n              </h1>\n            </figure>\n\n            <div class=\"recipe__details\">\n              <div class=\"recipe__info\">\n                <svg class=\"recipe__info-icon\">\n                  <use href=\"src/img/icons.svg#icon-clock\"></use>\n                </svg>\n                <span class=\"recipe__info-data recipe__info-data--minutes\">").concat(recipe.cookingTime, "</span>\n                <span class=\"recipe__info-text\">minutes</span>\n              </div>\n              <div class=\"recipe__info\">\n                <svg class=\"recipe__info-icon\">\n                  <use href=\"src/img/icons.svg#icon-users\"></use>\n                </svg>\n                <span class=\"recipe__info-data recipe__info-data--people\">").concat(recipe.servings, "</span>\n                <span class=\"recipe__info-text\">servings</span>\n\n                <div class=\"recipe__info-buttons\">\n                  <button class=\"btn--tiny btn--increase-servings\">\n                    <svg>\n                      <use href=\"src/img/icons.svg#icon-minus-circle\"></use>\n                    </svg>\n                  </button>\n                  <button class=\"btn--tiny btn--increase-servings\">\n                    <svg>\n                      <use href=\"src/img/icons.svg#icon-plus-circle\"></use>\n                    </svg>\n                  </button>\n                </div>\n              </div>\n\n              <div class=\"recipe__user-generated\">\n                <svg>\n                  <use href=\"src/img/icons.svg#icon-user\"></use>\n                </svg>\n              </div>\n              <button class=\"btn--round\">\n                <svg class=\"\">\n                  <use href=\"src/img/icons.svg#icon-bookmark-fill\"></use>\n                </svg>\n              </button>\n            </div>\n\n            <div class=\"recipe__ingredients\">\n              <h2 class=\"heading--2\">Recipe ingredients</h2>\n              <ul class=\"recipe__ingredient-list\">\n                <li class=\"recipe__ingredient\">\n                  <svg class=\"recipe__icon\">\n                    <use href=\"src/img/icons.svg#icon-check\"></use>\n                  </svg>\n                  <div class=\"recipe__quantity\">1000</div>\n                  <div class=\"recipe__description\">\n                    <span class=\"recipe__unit\">g</span>\n                    pasta\n                  </div>\n                </li>\n\n                <li class=\"recipe__ingredient\">\n                  <svg class=\"recipe__icon\">\n                    <use href=\"src/img/icons.svg#icon-check\"></use>\n                  </svg>\n                  <div class=\"recipe__quantity\">0.5</div>\n                  <div class=\"recipe__description\">\n                    <span class=\"recipe__unit\">cup</span>\n                    ricotta cheese\n                  </div>\n                </li>\n              </ul>\n            </div>\n\n            <div class=\"recipe__directions\">\n              <h2 class=\"heading--2\">How to cook it</h2>\n              <p class=\"recipe__directions-text\">\n                This recipe was carefully designed and tested by\n                <span class=\"recipe__publisher\">").concat(recipe.publisher, "</span>. Please check out\n                directions at their website.\n              </p>\n              <a\n                class=\"btn--small recipe__btn\"\n                href=\"").concat(recipe.sourceUrl, "\"\n                target=\"_blank\"\n              >\n                <span>Directions</span>\n                <svg class=\"search__icon\">\n                  <use href=\"src/img/icons.svg#icon-arrow-right\"></use>\n                </svg>\n              </a>\n            </div>\n    ");
+          recipeContainer.insertAdjacentHTML('afterbegin', markup);
+          _context.next = 19;
           break;
-        case 14:
-          _context.prev = 14;
+        case 16:
+          _context.prev = 16;
           _context.t0 = _context["catch"](0);
           alert(_context.t0);
-        case 17:
+        case 19:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 14]]);
+    }, _callee, null, [[0, 16]]);
   }));
   return function showRecipe() {
     return _ref.apply(this, arguments);
@@ -210,7 +214,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3033" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1898" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
