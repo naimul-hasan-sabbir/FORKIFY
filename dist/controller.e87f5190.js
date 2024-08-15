@@ -17880,27 +17880,29 @@ var renderSpinner = function renderSpinner(parentEl) {
 };
 var showRecipe = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var res, data, recipe, markup;
+    var id, res, data, recipe, markup;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
+          id = window.location.hash.slice(1);
+          console.log(id);
           // 1) Loading recipe
           renderSpinner(recipeContainer);
-          _context.next = 4;
-          return fetch('https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886');
-        case 4:
+          _context.next = 6;
+          return fetch("https://forkify-api.herokuapp.com/api/v2/recipes/".concat(id));
+        case 6:
           res = _context.sent;
-          _context.next = 7;
+          _context.next = 9;
           return res.json();
-        case 7:
+        case 9:
           data = _context.sent;
           if (res.ok) {
-            _context.next = 10;
+            _context.next = 12;
             break;
           }
           throw new Error("".concat(data.message, " (").concat(res.status, ")"));
-        case 10:
+        case 12:
           recipe = data.data.recipe;
           recipe = {
             id: recipe.id,
@@ -17920,23 +17922,23 @@ var showRecipe = /*#__PURE__*/function () {
           }).join(''), "\n            </div>\n\n            <div class=\"recipe__directions\">\n              <h2 class=\"heading--2\">How to cook it</h2>\n              <p class=\"recipe__directions-text\">\n                This recipe was carefully designed and tested by\n                <span class=\"recipe__publisher\">").concat(recipe.publisher, "</span>. Please check out\n                directions at their website.\n              </p>\n              <a\n                class=\"btn--small recipe__btn\"\n                href=\"").concat(recipe.sourceUrl, "\"\n                target=\"_blank\"\n              >\n                <span>Directions</span>\n                <svg class=\"search__icon\">\n                  <use href=\"").concat(_icons.default, "#icon-arrow-right\"></use>\n                </svg>\n              </a>\n            </div>\n    ");
           recipeContainer.innerHTML = '';
           recipeContainer.insertAdjacentHTML('afterbegin', markup);
-          _context.next = 21;
+          _context.next = 23;
           break;
-        case 18:
-          _context.prev = 18;
+        case 20:
+          _context.prev = 20;
           _context.t0 = _context["catch"](0);
           alert(_context.t0);
-        case 21:
+        case 23:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 18]]);
+    }, _callee, null, [[0, 20]]);
   }));
   return function showRecipe() {
     return _ref.apply(this, arguments);
   };
 }();
-showRecipe();
+window.addEventListener('hashchange', showRecipe);
 },{"core-js/stable":"node_modules/core-js/stable/index.js","regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","../img/icons.svg":"src/img/icons.svg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -17962,7 +17964,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7163" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "4136" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
